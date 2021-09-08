@@ -1,11 +1,24 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <component :is="layout">
+      <router-view />
+    </component>
   </div>
-  <router-view/>
 </template>
-
+<script>
+import EmptyLayout from '@/layout/EmptyLayout';
+import MainLayout from '@/layout/MainLayout';
+export default {
+  computed:{
+    layout(){
+      return (this.$route.meta.layout || 'empty') + '-layout'
+    }
+  },
+  components: {
+    EmptyLayout, MainLayout
+  }
+}
+</script>
 <style lang="scss">
 @import '~materialize-css/dist/css/materialize.min.css';
 @import 'assets/index.css';
