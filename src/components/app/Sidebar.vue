@@ -29,11 +29,11 @@ export default {
   props: ['modelValue'],
   data: () => ({
     links: [
-      {title: 'Счет', url: '/'},
-      {title: 'История', url: '/history'},
-      {title: 'Планирование', url: '/planning'},
-      {title: 'Новая запись', url: '/record'},
-      {title: 'Категории', url: '/categories'},
+      {title: 'О нас', url: '/'},
+      {title: 'Заказ', url: '/history'},
+      {title: 'Личный кабинет', url: '/planning'},
+      //{title: 'Новая запись', url: '/record'},
+      //{title: 'Категории', url: '/categories'},
     ]
   })
 }
