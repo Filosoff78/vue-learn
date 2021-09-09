@@ -1,5 +1,4 @@
 <template>
-  <span>Сообщение: {{ modelValue }}</span>
   <ul class="sidenav app-sidenav" :class="{open: modelValue}">
     <template
       v-for="link in links"
