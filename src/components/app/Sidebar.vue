@@ -30,7 +30,7 @@ export default {
   data: () => ({
     links: [
       {title: 'О нас', url: '/'},
-      {title: 'Заказ', url: '/history'},
+      {title: 'Заказ', url: '/order'},
       {title: 'Личный кабинет', url: '/planning'},
       //{title: 'Новая запись', url: '/record'},
       //{title: 'Категории', url: '/categories'},

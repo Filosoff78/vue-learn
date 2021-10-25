@@ -32,10 +32,10 @@ const routes = [
     component: () => import('../views/Detail.vue')
   },
   {
-    path: '/history',
-    name: 'history',
+    path: '/order',
+    name: 'order',
     meta: {layout: 'main'},
-    component: () => import('../views/History.vue')
+    component: () => import('../views/Order.vue')
   },
   {
     path: '/planning',
