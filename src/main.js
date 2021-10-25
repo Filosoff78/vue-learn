@@ -7,4 +7,13 @@ import 'materialize-css/dist/js/materialize.min'
 
 import 'bootstrap/dist/css/bootstrap.css'
 
-createApp(App).use(store).use(index).mount('#app')
+import mitt from 'mitt'
+const eventBus = mitt()
+
+const app = createApp(App)
+
+app.config.globalProperties.eventBus = eventBus
+
+app.use(store)
+app.use(index)
+app.mount('#app')

@@ -20,16 +20,12 @@
 
 <script>
 import Stage from "../components/app/Stage";
-import {translate} from "../animate";
-
-import mitt from 'mitt'
-const emitter = mitt()
 
 export default {
   components: {Stage},
   methods: {
     additem() {
-      this.emitter.emit("addItem", 2);
+      this.eventBus.emit('test', event)
     }
   }
 }
