@@ -157,4 +157,5 @@ a {
 }
 .row {
     margin-bottom: 0;
+    --bs-gutter-x: 0 !important;
 }

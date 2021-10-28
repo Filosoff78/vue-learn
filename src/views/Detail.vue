@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div>
       <div class="breadcrumb-wrap">
         <a href="/history" class="breadcrumb">История</a>
