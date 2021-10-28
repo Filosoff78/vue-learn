@@ -151,3 +151,10 @@
 a {
     text-decoration: none !important;
 }
+
+.row .col {
+    padding: 0;
+}
+.row {
+    margin-bottom: 0;
+}

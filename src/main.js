@@ -17,3 +17,5 @@ app.config.globalProperties.eventBus = eventBus
 app.use(store)
 app.use(index)
 app.mount('#app')
+
+if(localStorage.items) localStorage.items = 0;

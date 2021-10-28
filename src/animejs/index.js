@@ -1,12 +1,20 @@
 import anime from 'animejs';
 
-export function translate(element) {
-    anime({
-        targets: element,
-        translateX: 250,
-        rotate: '1turn',
-        backgroundColor: '#FFF',
-        duration: 800
-    });
-    console.log(element)
+export function translate(element, type, setting) {
+    if(type === 'wood'){
+        anime({
+            targets: element,
+            translateY: 65 + setting,
+            duration: 500,
+            easing: 'linear'
+        });
+    }
+    if(type === 'wheels'){
+        anime({
+            targets: element,
+            rotate: 360,
+            loop: true,
+            easing: 'linear',
+        });
+    }
 }

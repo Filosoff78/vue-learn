@@ -3,7 +3,7 @@
 
     <Navbar @click-hamburger="isOpen=!isOpen"/>
     <Sidebar v-model="isOpen"/>
-    <main class="app-content" :class="{full: !isOpen}">
+    <main class="app-content2" :class="{full: !isOpen}">
         <router-view />
     </main>
 
@@ -21,11 +21,12 @@ import Sidebar from '@/components/app/Sidebar.vue'
 
 export default {
   data: () => ({
-    isOpen: true
+    isOpen: false
   }),
   name: 'main-layout',
   components: {
-    Navbar, Sidebar
+    // Navbar,
+    Sidebar
   }
 }
 </script>
