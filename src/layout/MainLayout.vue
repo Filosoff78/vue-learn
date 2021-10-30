@@ -1,32 +1,37 @@
 <template>
   <div class="app-main-layout">
-
-    <Navbar @click-hamburger="isOpen=!isOpen"/>
-    <Sidebar v-model="isOpen"/>
-    <main class="app-content2" :class="{full: !isOpen}">
+    <div v-if="shownav">
+      <navbar/>
+    </div>
+    <main>
         <router-view />
     </main>
 
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large blue" href="#">
-        <i class="large material-icons">add</i>
-      </a>
-    </div>
+<!--    <div class="fixed-action-btn">-->
+<!--      <a class="btn-floating btn-large blue" href="#">-->
+<!--        <i class="large material-icons">add</i>-->
+<!--      </a>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/app/Navbar.vue'
-import Sidebar from '@/components/app/Sidebar.vue'
 
 export default {
-  data: () => ({
-    isOpen: false
-  }),
+  data() {
+    return {
+      shownav: true
+    }
+  },
   name: 'main-layout',
   components: {
-    // Navbar,
-    Sidebar
+    Navbar,
+  },
+  mounted() {
+    this.eventBus.on('shownav', (e) => {
+      this.shownav = e
+    })
   }
 }
 </script>

@@ -17,4 +17,14 @@ export function translate(element, type, setting) {
             easing: 'linear',
         });
     }
+
+}
+export function numberAnimation(el, endValue, incrementor, duration) {
+    anime({
+        targets: el,
+        textContent: endValue,
+        round: 1,
+        easing: 'easeInOutQuad',
+        duration: 4000,
+    });
 }
