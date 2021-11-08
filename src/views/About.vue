@@ -3,7 +3,7 @@
     <div class="row mt-3 mb-3">
       <div class="col-sm-6 col-md-3 d-flex justify-content-center" v-for="c in count">
         <div class="text-center d-block mt-3">
-          <h2 class="mt-2 number-up">0</h2>
+          <h2 class="mt-2 number-up font500">0</h2>
           <p>{{ c.text }}</p>
         </div>
       </div>
@@ -22,8 +22,8 @@
     <div class="row mt-4">
       <div class="col-sm-12 col-md-4 d-flex align-self-stretch about-border" v-for="a in advantage">
         <div class="text-center d-block mt-3">
-          <span :class="a.class" style="font-size: 40px; color: #d19f68;"></span>
-          <h2 class="mt-2" >{{ a.head }}</h2>
+          <span :class="a.class" style="font-size: 40px; color: #198754;"></span>
+          <h2 class="mt-2 font500" >{{ a.head }}</h2>
           <p>{{ a.text }}</p>
         </div>
       </div>
@@ -37,7 +37,7 @@ import { numberAnimation } from '../animejs';
 export default {
   mounted() {
     let elems = document.querySelectorAll(".number-up")
-    elems.forEach((e,i) => numberAnimation(e, this.count[i].number));
+    elems.forEach((e,i) => numberAnimation(e, this.count[i].number, 4000));
   },
   data() {
     return {

@@ -19,12 +19,12 @@ export function translate(element, type, setting) {
     }
 
 }
-export function numberAnimation(el, endValue, incrementor, duration) {
+export function numberAnimation(el, endValue, duration) {
     anime({
         targets: el,
         textContent: endValue,
         round: 1,
         easing: 'easeInOutQuad',
-        duration: 4000,
+        duration: duration,
     });
 }

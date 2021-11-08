@@ -1,26 +1,25 @@
 <template>
   <!-- ***** Header Area Start ***** -->
   <header class="header-area">
-    <div class="container-fluid">
+    <div class="container-fluid ">
       <div class="row">
-        <div class="col-12">
-          <div class="menu-area d-flex justify-content-between">
-            <!-- Logo Area  -->
-            <div class="logo-area">
-              <h1 @click="showmenu()">Русская деревня</h1>
+        <!-- Logo Area  -->
+        <div class="logo-area d-none d-md-block col-6">
+          <h1 @click="showmenu()" class="font500">Русская деревня</h1>
+        </div>
+        <div class="menu-content-area col-sm-12 col-md-6 align-self-center">
+          <!-- Header Social Area -->
+          <div class="row">
+            <div class="header-social-area col-11 d-flex justify-content-end">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
+                <i class="fa fa-phone" aria-hidden="true"><span> 8 931 2278287</span></i>
+              </a>
             </div>
-
-            <div class="menu-content-area d-flex align-items-center">
-              <!-- Header Social Area -->
-              <div class="header-social-area d-flex align-items-center">
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <!-- Menu Icon -->
+            <div class="col-1">
+              <div class="">
+                <span class="navbar-toggler-icon " @click="showmenu()"></span>
               </div>
-              <!-- Menu Icon -->
-              <span class="navbar-toggler-icon" @click="showmenu()"></span>
             </div>
           </div>
         </div>
@@ -41,6 +40,17 @@ export default {
 
 <style scoped>
 /* :: Header Area CSS */
+@media (max-width: 767.98px) {
+  .header-social-area {
+    justify-content: space-between !important;
+  }
+}
+.header-social-area span{
+  font-family: var(--bs-body-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+}
 .page .header-area {
   position: inherit;
   padding: 15px 0;
@@ -52,18 +62,15 @@ export default {
   left: 0;
   width: 100%;
   height: auto;
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
-  background-color: transparent;
-  padding: 15px 30px; }
+  -webkit-transition-duration: 1000ms;
+  transition-duration: 1000ms;
+  padding: 15px 30px;
+}
 .header-area .logo-area h1 {
   color: #ffffff;
   font-size: 36px;
   font-weight: 100;
   cursor: pointer; }
-
-.header-area .menu-content-area .header-social-area {
-  margin-right: 30px; }
 .header-area .menu-content-area .header-social-area a {
   font-size: 18px;
   padding: 0 10px;

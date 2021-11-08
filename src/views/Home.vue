@@ -1,7 +1,7 @@
 <template>
   <section class="hero-area">
     <div class="row">
-      <div class="page" @click="shownav($event.target)" v-for="page in pages" :key="page.id">
+      <div class="page" @click="showpage($event.target)" v-for="page in pages" :key="page.id">
         <div class="bg-img slide-background-overlay slide" :class="page.class">
           <navbar v-if="page.shownav"/>
           <div class="container">
@@ -9,10 +9,13 @@
               <div class="col-12">
                 <div class="slides-content">
                   <div class="line"></div>
-                  <h2 class="text-nowrap">{{ page.name }}</h2>
+                  <div class="d-flex justify-content-center">
+                    <h2 class="text-nowrap font-wight-head">{{ page.name }}</h2>
+                  </div>
                   <div class="content-page">
                     <about v-if="page.id === 1"/>
                     <order v-if="page.id === 2"/>
+                    <contact v-if="page.id === 3"/>
                   </div>
                 </div>
               </div>
@@ -21,6 +24,7 @@
         </div>
       </div>
     </div>
+    <div class="bg-black modal-fullscreen position-fixed top-0"> </div>
   </section>
 </template>
 
@@ -30,6 +34,7 @@ import Contact from "./Contact";
 import Order from "./Order";
 import {translate} from "../animejs";
 import Navbar from "../components/app/Navbar";
+import {showMapContact} from "../assets/js/deliveryCalculator";
 
 export default {
   name: 'home',
@@ -61,7 +66,7 @@ export default {
   mounted() {
     this.elemPages = document.querySelectorAll(".page")
     this.eventBus.on('showmenu', () => {
-      this.elemPages.forEach(element => {
+      this.elemPages.forEach((element) => {
         element.classList.remove('pages-hide', 'pages-active', 'pages-left', 'pages-right')
         this.pages[element.dataset.id].shownav = false
         this.eventBus.emit('shownav', true)
@@ -69,13 +74,13 @@ export default {
     })
   },
   methods: {
-      shownav(click) {
+      showpage(click) {
         let clickel = click.closest('.page')
-        if(!clickel.classList.contains('pages-active') && !click.closest('.header-area')) {
+        if(clickel && !clickel.classList.contains('pages-active') && !click.closest('.header-area')) {
 
           this.eventBus.emit('shownav', false)
 
-          let h =  document.querySelector('.header-area').clientHeight + 20;
+          let h =  document.querySelector('.header-area').clientHeight + 40;
           clickel.querySelector('.slides-content').setAttribute('style', 'padding-bottom: '+ h + 'px')
 
           this.elemPages.forEach((e,i) => e.dataset.id = i);
@@ -93,6 +98,10 @@ export default {
           clickel.classList.toggle('pages-hide', false)
           clickel.classList.add('pages-active')
           this.pages[clickel.dataset.id].shownav = true
+
+          if(clickel.dataset.id == 2 && !window.ymapcontact) {
+            setTimeout(() => showMapContact(), 1000);
+          }
         }
       }
 
@@ -102,7 +111,9 @@ export default {
 </script>
 
 <style lang="scss">
-//@import '../assets/css/style.css';
+.modal-fullscreen {
+  height: 100vh;
+}
 h1 {
   font-weight: 100;
   font-size: 22px;
@@ -142,8 +153,6 @@ p {
 }
 .slide-background-overlay:hover::after, .pages-active .slide-background-overlay::after{
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 80%, rgba(0, 0, 0, 0.1) 110%, rgba(0, 0, 0, 0) 100%);
-  -webkit-transition-duration: 800ms;
-  transition-duration: 800ms;
 }
 .bg-img {
   background-position: center center;
@@ -184,7 +193,7 @@ p {
 .page .slide {
   position: relative;
   z-index: 1;
-  padding: 0 40px 100px;
+  padding: 0 1rem 100px;
   -webkit-transition-duration: 800ms;
   transition-duration: 800ms;
   overflow: hidden;
@@ -194,6 +203,7 @@ p {
 }
 .pages-active .slide {
   padding: 0 10px;
+  cursor: default;
 }
 .page .slide .slides-content {
   position: relative;
@@ -222,6 +232,8 @@ p {
   color: #ffffff;
   font-weight: 100;
   width: 100%;}
+.pages-active .font-wight-head {
+  font-weight: 500 !important;}
 .pages-left .slide .slides-content h2 {
   -webkit-transform: rotate(270deg);
   transform: rotate(270deg); }
